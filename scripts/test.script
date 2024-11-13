@@ -1,0 +1,15 @@
+character j is
+    # required
+    name is Jimmy
+
+    sprites are neutral, angry, happy
+    default is neutral 
+
+chapter first is
+    title is tulpar test
+    Scene start is
+        background is none
+
+        show j
+
+        j: i am Jimmy

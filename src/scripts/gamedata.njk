@@ -1,0 +1,17 @@
+---
+permalink: "{{pathPrefix}}/scripts/gamedata.js"
+---
+const GAME = {
+ PLAYERSTATE : {{ gamedata.playerstate | dump | safe }}, //overridable
+
+ PLAYERSTATE_DEFAULTS : {{ gamedata.playerstate | dump | safe }}, // not overridable
+ CHAPTERS :  {{ chapters.chapters | dump | safe }},
+ MAINMENU_BG : {{ gamedata.background | dump | safe }},
+ GAMETITLE : {{ gamedata.title | dump | safe }},
+ GAME_VERSION : 0,
+}
+
+GAME.PLAYERSTATE.settings = Object.keys(GAME.PLAYERSTATE.settings).reduce((acc, key) => {
+acc[key] = GAME.PLAYERSTATE.settings[key].value;
+return acc;
+}, {});

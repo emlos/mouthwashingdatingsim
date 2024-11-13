@@ -1,0 +1,22 @@
+{
+  "name": "mouthdating",
+  "version": "1.0.0",
+  "description": "Dating sim where you romance jimmy curly or anya",
+  "main": "index.js",
+  "scripts": {
+    "linter_setup": "rm -rf ./venv && python -m venv venv && source venv/bin/activate && pip install djlint && deactivate && echo \"=== EXTENSION SETUP ===\" && code . --new-window --install-extension ms-python.python --install-extension monosans.djlint && echo \"=== NPM Setup ===\" && npm i",
+    "dry": "npx eleventy --serve --quiet",
+    "debug": "export MOUTHSIM_ENV=debug && rm -rf local && DEBUG=Eleventy* npx eleventy --serve",
+    "start": "export MOUTHSIM_ENV=dev && rm -rf local && npx eleventy --serve --quiet",
+    "build_old": "export MOUTHSIM_ENV=deploy && rm -rf public && npx eleventy --quiet --output=public && echo -n size: && du -hs _site",
+    "build": "export MOUTHSIM_ENV=deploy && eleventy"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy-img": "^4.0.2",
+    "eleventy-plugin-gen-favicons": "^1.1.3",
+    "simple-git": "^3.25.0"
+  }
+}

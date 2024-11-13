@@ -1,0 +1,10 @@
+local
+node_modules/
+public/
+node_modules/*
+*.clip
+.directory
+.env
+venv/
+.vscode/settings.json
+decompiled

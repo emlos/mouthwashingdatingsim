@@ -1,0 +1,150 @@
+<!-- image backdrop -->
+<section id="scene-container" class="scene">
+    <div id="background-panel" class="characters">
+      <!--div id="options-button" class="options-button disabled"></div> -->
+        <div id="popup">
+            <div class="popup-container">
+                <p>Sample text</p>
+                <div class="popup-buttons-container">
+                    <button id="popup-ok"class="panel enabled button popup-button">Ok</button>
+                    <button id="popup-cancel"class="panel enabled button popup-button">Cancel</button>
+                </div>
+            </div>
+        </div>
+        <div id="settings-panel" class="settings-area modal">
+            <!--settings are generated from PlayerSettings-->
+            <button class="close-modal-button enabled"></button>
+            <div class="settings-container">
+                {% for key in gamedata.playerstate.settings | keys %}
+                    {% set setting = gamedata.playerstate.settings[key] %}
+                    <div class="settings-row {{ 'disabled' if setting.disabled }}">
+                        <span class="settings-label">{{ key | capitalize_all }}</span>
+                        {#checkbox#}
+                        {% if 'checkbox' == setting.type | lower %}
+                            <div data-type="checkbox" class="settings-content">
+                                <button class="settings-checkbox settings-icon {{ 'checked' if setting.value }}"
+                                        id="setting-{{ key }}"></button>
+                            </div>
+                            {#counter#}
+                        {% elif 'counter' == setting.type | lower %}
+                            <div data-type="counter"
+                                 class="settings-content">
+                                <button data-switch="decrease" class="settings-button-decrease settings-icon"></button>
+                                <span class="settings-button-value" id="setting-{{ key }}">{{ setting.value }}</span>
+                                <button data-switch="increase" class="settings-button-increase settings-icon"></button>
+                            </div>
+                        {% elif 'carousel' == setting.type | lower %}
+                            <div data-type="carousel"
+                                 class="settings-content">
+                                <button data-switch="decrease" class="settings-button-decrease settings-icon"></button>
+                                <span class="settings-button-value" id="setting-{{ key }}">{{ setting.value }}</span>
+                                <button data-switch="increase" class="settings-button-increase settings-icon"></button>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                <div data-type="info"  class="settings-row settings-row-info">
+                    <span class="settings-label">BUILD</span>
+                    <div class="settings-content">0</div>
+                </div>
+                <div class="settings-row">
+                    <button id="setting-export">export data</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="log-panel" class="log-area modal">
+        <h3 class="title">Game Log</h3>
+        <button class="close-modal-button enabled"></button>
+        <div class="log-container" id="log-container"></div>
+    </div>
+    <div id="saves-panel" class="saves-area modal" data-mode="">
+        <h3 class="title"></h3>
+        <button class="close-modal-button close-saves-button enabled"></button>
+        <div class="saves-container" id="saves-container"></div>
+    </div>
+    <!-- choices via  script -->
+    <div id="choice-panel" class="choice-area panel"></div>
+    <div id="spinner"></div>
+    <div id="overlay" class="overlay state-choice"></div>
+    <!-- sprites via  script -->
+    <div id="sprite-panel" class="characters-sprites"></div>
+    <div id="talk-panel" class="talk-area">
+        <div class="talkbox">
+            <div id="nametag" class="talkbox-nametag panel"></div>
+            <div class="talkbox-area">
+                <p id="line"></p>
+                <!-- textinput-->
+                <div id="input-textbox-panel"
+                     class="talkbox-input talkbox-textinput">
+                    <button id="random-textinput-button" class="input-textrandom enabled"></button>
+                    <input maxlength="15"
+                           placeholder="Name..."
+                           id="talkbox-text-input"
+                           type="text" />
+                    <button id="confirm-textinput-button" class="input-confirm enabled"></button>
+                </div>
+            </div>
+            <button tabindex="-1"
+                    id="next-line-button"
+                    class="talkbox-nextbutton enabled"></button>
+        </div>
+        <div class="talkbox-side-menu" id="game-menu">
+            <div class="talkbox-menu-list">
+                <button tabindex="-1"
+                        class="talkbox-menu-item enabled image-panel"
+                        id="start-menu-item">
+                    <p>Start</p>
+                </button>
+                <button tabindex="-1"
+                        class="talkbox-menu-item enabled image-panel"
+                        id="save-menu-item">
+                    <p>Save</p>
+                </button>
+                <button tabindex="-1"
+                        class="talkbox-menu-item enabled image-panel"
+                        id="load-menu-item">
+                    <p>Load</p>
+                </button>
+                <button tabindex="-1"
+                        class="talkbox-menu-item enabled image-panel"
+                        id="log-menu-item">
+                    <p>Log</p>
+                </button>
+                <button tabindex="-1"
+                        class="talkbox-menu-item enabled image-panel"
+                        id="settings-menu-item">
+                    <p>Settings</p>
+                </button>
+                <button style="display: none"
+                        tabindex="-1"
+                        class="talkbox-menu-item disabled image-panel"
+                        id="back-menu-item">
+                    <p>&lt;&lt;</p>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+<template id="templatesave">
+    <div class="save-wrapper" data-save="empty">
+        <!--epty or filled-->
+        <div class="save-preview"></div>
+        <div class="save-background">
+            <input maxlength="38"
+                   type="text"
+                   class="save-name-input"
+                   autocomplete="off"
+                   placeholder="Click the letter to begin..."
+                   id="save-name-0">
+            <div class="save-info-container">
+                <p>Milo</p>
+                <p>Chapter 1</p>
+                <p>Tue Apr 20 2024 14:01:59</p>
+            </div>
+        </div>
+        <button class="confirm-save-button save-button"></button>
+        <button class="delete-save-button save-button enabled"></button>
+    </div>
+</template>
+<script>init();</script>
