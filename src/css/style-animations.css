@@ -33,3 +33,19 @@
       transform: translate(0px , 0px) rotate(-45deg);
     }
   }
+
+
+  @keyframes letterSlide {
+	0% {
+		opacity: 0;
+		transform: translateY(2em) translateX(2em);
+	}
+	30% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0) translateX(0);
+	}
+}
