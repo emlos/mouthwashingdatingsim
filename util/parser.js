@@ -196,14 +196,16 @@ function parseAll(text) {
         // console.log(character.attr.sprites)
 
         setReference('characters', character.id, character.attr)
+      
         return character
+        
       }) //extract info in json
 
     //build sprites etc
     characterDataIn.forEach(raw => {
       let character = {}
       let name = capt(raw.attr.name) //name is required for characters
-      let sprites = raw.attr.sprites
+      let sprites = raw.attr.sprites 
       let defaultSprite = raw.attr.default || sprites[0] || null
 
       character['name'] = name //required
@@ -503,8 +505,9 @@ function parseAll(text) {
 
           //else console.log(line)
 
-
-          dialogue.speaking = getReference('characters', speaker).name
+          let characterRef = getReference('characters', speaker)
+          dialogue.speaking = characterRef.name
+          dialogue.color = characterRef.color || "fff"
 
           status.inChoice = false
           status.currentChoice = null

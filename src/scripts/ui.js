@@ -238,16 +238,10 @@ function loadMainMenu() {
   display(HTML.inputpanel, 'none')
   changeBackground(HTML.background, GAME.MAINMENU_BG)
 
-  HTML.text.style.alignSelf = "center"
-
   clear(HTML.characters)
 
-  const title = document.createElement('h2')
-  title.classList.add('main-title')
-  title.innerHTML = GAME.GAMETITLE
-
-  HTML.characters.appendChild(title)
-  show(HTML.characters, HTML.textbox, HTML.menu.panel)
+  hide(HTML.textbox)
+  show(HTML.characters, HTML.menu.panel)
 }
 
 //INITIAL LOAD of start/save/load
@@ -569,6 +563,8 @@ function showTitle(title) {
     HTML.optionsbutton
   )
 
+  HTML.text.style.color = "white"
+
   CURRENT.scene = null
   CURRENT.dialogue = null
   //chapter can be initialized
@@ -595,7 +591,6 @@ function start(scene_id, dialogue = null) {
 
   CURRENT.scene = scene_id
   CURRENT.dialogue = dialogue ? dialogue : 0
-
   const scn = currentScene()
 
   changeBackground(HTML.background, scn.background)
@@ -617,7 +612,7 @@ function loadDialogue(dialogue) {
   if (dialogueValid(dialogue.conditions)) {
     loadDialogueBackground(dialogue.background)
 
-    loadDialogueCharacters(dialogue.characters, dialogue.speaking)
+    loadDialogueCharacters(dialogue.characters, dialogue.speaking, dialogue.color)
 
     loadDialogueSetsFlags(dialogue.flags)
 
@@ -672,9 +667,10 @@ function dialogueValid(conditions) {
   return validatePlayerDataAll(...conditions)
 }
 
-function loadDialogueCharacters(characters, speaking) {
+function loadDialogueCharacters(characters, speaking, color) {
   setNametag(speaking)
   show(HTML.nametag, HTML.characters, HTML.background)
+  HTML.nametag.style.color = "#"+color
 
   hide(HTML.overlay)
 
@@ -737,6 +733,7 @@ function loadDialogueText(dialogue) {
   show(HTML.menu.panel);
   show(HTML.nametag);
   show(HTML.textbox);
+  HTML.text.style.color = "#" + dialogue.color
 
   //textbox look if character speaking and has sprites
   if (speaker != "Narrator" && speaker != "Player") {
@@ -793,7 +790,7 @@ function loadDialogueChoices(choices) {
     choices.forEach(choice => {
       let btn = document.createElement('button')
 
-      btn.classList.add('choice-button', 'panel', 'enabled')
+      btn.classList.add('choice-button', 'image-panel', 'enabled')
       btn.id = 'button-choice-' + choice.id
       btn.innerHTML = choice.text
 
@@ -1003,7 +1000,6 @@ function nextDialogue() {
   let dialogue = scene.dialogues[CURRENT.dialogue]
   if (dialogueValid(dialogue.conditions) && !dialogue.choices) writeLog(dialogue.speaking + ': ', dialogue.text)
 
-
   if (scene.dialogues.length > CURRENT.dialogue + 1) {
     CURRENT.dialogue += 1
 
@@ -1027,6 +1023,7 @@ function endChapter() {
     initChapter()
   } else {
     show(HTML.textbox)
+    HTML.text.style.color = "white"
     show(HTML.menu.panel)
     setTextbox('The End <3', 0)
   }
