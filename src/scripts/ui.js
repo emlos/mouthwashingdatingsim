@@ -237,7 +237,6 @@ function loadMainMenu() {
 
   display(HTML.inputpanel, 'none')
   changeBackground(HTML.background, GAME.MAINMENU_BG)
-  setTextbox('A DD1 Dating Sim')
 
   HTML.text.style.alignSelf = "center"
 

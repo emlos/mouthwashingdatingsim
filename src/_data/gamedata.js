@@ -7,8 +7,8 @@ const prefix = '/' + config.githubPrefix + '/'
 const imagesrc =  prefix + '/images'
 
 module.exports = {
-  title: 'Lovewashing',
-  background: imagesrc + '/backgrounds/manoin.png',
+  title: '',
+  background: imagesrc + '/backgrounds/main.png',
   playerstate: {
     name: null,
     flags: [],

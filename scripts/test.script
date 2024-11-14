@@ -8,8 +8,10 @@ character j is
 chapter first is
     title is tulpar test
     Scene start is
-        background is none
+        background is placeholder.png
 
         show j
 
         j: i am Jimmy
+        j: You're a fucking cocktease, you know that, right? Always walking around, flaunting your ass.
+        j: You're gonna get what you deserve.
