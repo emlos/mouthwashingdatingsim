@@ -297,7 +297,7 @@ permalink: "{{ pathPrefix }}/css/style.css"
 	display: flex;
 	flex-direction: column;
 
-	background-image: url({{"/images/ui/saves_panel.png" | url}});
+	background: repeating-linear-gradient(90deg, transparent 0 calc(100%/var(--n) - 1px), black 0 calc(100%/var(--n))) left/calc(100% + 2px) 100%, repeating-linear-gradient(180deg, transparent 0 calc(100%/var(--n) - 1px), black 0 calc(100%/var(--n))) top/100% calc(100% + 2px), repeating-linear-gradient(90deg, transparent 0 calc(100%/var(--n) - 1px), white 0 calc(100%/var(--n))) right/calc(100% + 2px) 100%, repeating-linear-gradient(180deg, transparent 0 calc(100%/var(--n) - 1px), white 0 calc(100%/var(--n))) bottom/100% calc(100% + 2px);
 
 	width: 70vw; /* Adjust as needed */
 	height: calc(70vw / 1.6); /* Maintain 1.4 aspect ratio */
@@ -624,7 +624,7 @@ permalink: "{{ pathPrefix }}/css/style.css"
 }
 
 .sprite:not(.talking) {
-	height: 81%;
+	height: 85%;
 	filter: brightness(0.8);
 }
 

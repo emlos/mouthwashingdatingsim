@@ -762,9 +762,11 @@ function loadDialogueText(dialogue) {
 
   if (speaker == "Narrator") {
     HTML.text.classList.add("narrator-font")
+    HTML.nametag.style.visibility = "hidden"
   }
   else {
     HTML.text.classList.remove("narrator-font")
+     HTML.nametag.style.visibility = "visible"
   }
 
   let userSpeed =
@@ -872,25 +874,13 @@ function loadInput(dialogueInput) {
 //for names only
 function validateInput() {
   const restrictednames = [
-    'dismas',
-    'reynauld',
-    'junia',
-    'paracelsus',
-    'boudica',
-    'audrey',
-    'willam',
-    'tardif',
-    'amani',
-    'barristan',
-    'damian',
-    'missandei',
-    'margaret',
-    'sahar',
-    'sarmenti',
-    'baldwin',
-    'josephine',
-    'bigby',
-    'alhazred'
+    'Jimmy',
+    'Jimbo',
+    'Curly',
+    'Anya',
+    'Daisuke',
+    'Swansea',
+    'Jim'
   ]
 
   const input = HTML.inputbox.value.toLowerCase().trim()
