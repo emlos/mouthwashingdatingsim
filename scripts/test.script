@@ -1,17 +1,685 @@
 character j is
     # required
     name is Jimmy
+    color is 7afd7b #as hex
 
-    sprites are neutral, angry, happy
+    sprites are neutral, happy, back
+    default is neutral 
+character c is
+    # required
+    name is Curly
+    color is 5d7fd1 #as hex
+
+    sprites are neutral, happy, back
     default is neutral 
 
+character d is
+    # required
+    name is Daisuke
+    color is f36c8f #as hex
+
+    sprites are neutral, happy, sad, back
+    default is neutral 
+
+character s is
+    # required
+    name is Swansea
+    color is f7ce51 #as hex
+
+    sprites are neutral, happy, back
+    default is neutral 
+
+character a is
+    # required
+    name is Anya
+    color is 78e9e9 #as hex
+
+    sprites are neutral, happy, back
+    default is neutral
+
 chapter first is
-    title is tulpar test
+    title is Day 2 of 382
     Scene start is
-        background is placeholder.png
+        background is placeholder.png #lounge_01.png
 
-        show j
+        N: You read the paper in your hands.
+        N: Don't they have those already?
+        N: "Name:"
+        input into name
+        N: "Age:"
+        N: No, you're sure you've filled out this exact document twice by now.
+        N: "Occupation:"
+        N: Technical IT engineer. Just reading diagnostics all day.
 
-        j: i am Jimmy
-        j: You're a fucking cocktease, you know that, right? Always walking around, flaunting your ass.
-        j: You're gonna get what you deserve.
+        N: "On a scale from 1 to 5, how mission ready are you?"
+        N: Five. You always pick fives on these questions.
+        N: "On a scale from 1 to 5, how do you find the crew accomodations?"
+        N: Five again.
+        N: "On a scale from 1 to 5, how would you rate your compatibility with the rest of the crew?"
+        N: You hestitate. You haven't really... talked much to any of them.
+        N: Eh, five.
+        N: "Please return the form to the captain on-site."
+        P: Guess I'm done.
+        N: They're always making you do paperwork, even after launch.
+        N: Time to drop off the all-important form then.
+
+        background is placeholder.png # corridor_01.png
+
+        N: You make your way to the cockpit, past all of the different doors, and walls with the occasional Pony Express motivational poster.
+        N: At some point, you overlook a sign, and and up back in the lounge again.
+        N: This ship sucks so bad.
+        N: Eventually, you reach the cockpit doors, and they unseal letting you in.
+
+        background is placeholder.png #cockpit_01.png
+
+        show c back
+        N: A blonde man is checking something out on the monitor before him.
+        P: Captain Curly?
+        show c neutral
+        N: He spins around.
+        c: Just Curly, please.
+        c: How's it going so far, _name?
+        show c happy
+        N: He has a really bright smile. That's probably good for a captain, for morale and such.
+        P: It's... well there weren't any incidents so far.
+        N: You smile too. He's got a friendly aura, it makes you feel at ease.
+        N: He just nods, like he's expecting you to continue.
+        P: Oh yeah, I have to drop this intake form off. It's signed and everything.
+        P: Though don't you think it's a bit... unnecessary? I mean it's all in the system already.
+        N: He shrugs, then takes the paper from you and sets it aside.
+        c: I guess they just want to document everything they can. Big companies and their liabilities...
+        N: He feeds the paper into a machine nearby.
+        c: There, all done! 
+        show c neutral
+        c: Have you been to utility yet? Swansea mentioned he had some problems there.
+
+        choice is Chat
+            go curly_chat_01
+            set curly_chat_001
+        choice is Do your job
+        
+        P: Yeah, he told me.
+        go curly_chat_01_end
+
+
+    Scene curly_chat_01 is
+        background is placeholder.png #cockpit_01.png
+
+
+        P: Yeah he told me already. Something about Daisuke...?
+        P: I was just about to go there, when I remembered the form.
+        P: ...and I got a bit lost. The corridors here look really similar.
+
+        show c happy
+
+        c: Hah I get that.
+        c: The first few days are the hardest to adjust to, but soon you'll be crawling the vents with the best of them.
+        c: Actually, Swansea will probably make Daisuke do that.
+        N: The corners of his eyes crinkle a bit when he smiles.
+        N: How long has he been working on ships? 10 years? More?
+        P: Hopefully nobody will have to crawl anywhere anytime soon.
+        N: You return the smile.
+        P: Have you been with Pony Express long? You seem to know what you're talking about.
+
+        show c neutral
+        
+        c: A while. I don't really have much going on on earth, so I get to travel the universe.
+        c: So to speak.
+        N: He looks tired when he says that. 
+        N: You don't want to pry, or worse, get overtly friendly with the captain...
+        N: But you're definitely curious.
+
+        choice is Ask about career
+            set know_curly_career
+        choice is Ask about earth
+            set know_curly_family
+        choice is Ask about Tulpar crew
+            set know_tulpar_crew
+
+        if know_curly_career
+            show c neutral
+            P: I suppose I can relate somewhat.
+            N: You give him a slight smile.
+            P: *People* people aren't first in line to get locked in with four strangers for months at a time.
+            N: Curly interrupts you before you figure out what to say next.
+            c: Five. 
+            c: Pony Express... they wanted me to take an intern with us.
+            c: I probably should've pushed back more, but it slipped my mind. And besides, Daisuke's a bright kid, he can learn a lot here.
+            N: You make a mental note to run an updated inventory calculation. Just in case.
+            P: Okay, five strangers. But if you're drawn to this life, you've probably worked your way to the top, right?
+            N: He shrugs, then looks at the monitor to his left.
+            c: You've only been hired recently right?
+            c: When you start out, it's usually for a specific trip, and then they decide if they want to offer you a contract.
+            c: I've been "scouted".
+            c: I think one of the higher ups saw that my previour workplace was going under, and they needed a pilot.
+            c: From there I've been doing jobs, and long story short, they've made me captain.
+            N: Even though his tone is even, nice even, he doesn't seem happy.
+            P: And do you like it here? I mean I'm only here because I need the money, but you...
+            N: You trail off, unsure how to continue. You really, *really* don't mean to pry.
+
+            show c happy
+
+            N: Surprisingly, his mood seems to lighten at that. And he chuckles.
+            N: It's a nice sound.
+            c: Yeah, I do.
+            c: It's not that bad of a company, especially once you get to know the ins and outs of the business.
+            c: You meet interesting people, I still keep in contact with one of the guys from a few years back.
+            c: I do miss earth though.
+            
+            show c neutral
+
+            P: Are the round trips this long usually?
+            c: He thinks for a moment.
+            c: It really depends - some are just from warehouse to warehouse, and some take months, like this one.
+            c: That's why I think it's important to be comfortable with each other, before we succumb to space madness.
+            N: That gets a slight laugh out of you. His personality is infectious, you think.
+            P: Well, let's hope this goes better for Tulpar, tan the Nostromo, yeah?
+
+            show c happy
+
+            c: I promise not to send any of you on away missions anytime soon.
+            c: But yeah, I won't lie and say Pony Express is the best place to work. It's the people that make it worthwhile.
+            N: They say a healthy worplace is a good manager, and Curly seems to be a real stellar guy.
+            N: You wonder what it is that he's not saying though.
+            N: Or maybe he just thinks a job is a job, and he's good at being a pilot.
+            P: If most of the crew share your outlook, then I think we're off to a good start.
+
+            c: Oh, I'm sure we're be working well together.
+            c: Those psychological questionnaires you had to fill out with your application?
+            c: From what I gather, they use them to get the right personalities.
+            c: There's a big science behind them, matching tempers and qualifications. I don't know how they do it, but it's worked so far.
+            c: In all my years working for Pony Express, I've never really had any incidents.
+            N: He pauses for a second.
+            c: Well not personnel related ones. Though you should ask Swansea about the time the autopilot malfunctioned.
+            c: We've lost half a month there, and management was *not* happy.
+
+            show c neutral
+
+            P: Heh, maybe I'll do that.
+            N: he nods. A silence falls, though not an uncomfortable one.
+            N: It feels like a fitting place to stop talking, and besides you're still on the clock.
+
+            go swansea_chat_01 
+        
+        if know_curly_family
+            show c neutral
+            P: So you never take breaks from... this?
+            P: No friends or family to come back to?
+            N: A second too late you realize how this sounds.
+            P: I just mean, that sounds a bit... lonely.
+            N: Now that's nice and awkward, good fucking job _name.
+
+            N: Surprisingly he doesn't seem offended at the question.
+            N: He even smiles slightly.
+            c: No, that's not what I meant.
+            c: I suppose I'm just focused on the job. Being captain is a big responsibility, and I can't afford any distractions.
+            N: He shrugs again and the green lights from the monitors all around catches in his hair.
+
+            c: Besides, being on a ship with a crew is hardly isolating.
+            c: Why did you sign up for the mission? Just work?
+            N: He seems genuinely curious about you.
+            P: Ah, well I...
+
+            choice is Just the job
+                set curly_001_answer_job
+            choice is Something new
+                set curly_001_answer_new
+
+            if curly_001_answer_job
+                P: I really just needed the money. And some friends said Pony Express will hire anyone capable enough so...
+                N: It feels a bit weird admitting that to the captain.
+                P: But if you have to report conversations with the crew to headquarters, then I mean, Pony Express is my dream workplace!
+                N: He seems laid back enough for you to spin it into a joke.
+                N: And sure enough, he smiles.
+
+                show c happy
+
+                c: Oh of course. 
+                c: Completely off the record, most people who sign up for manned missions think the same way.
+                c: Plus, you meet all kinds of people here.
+                c: I still keep in touch with some blokes from my previous trips.
+                N: You smile back.
+                P: I'd never think there's a lot of, uh, social types here.
+                N: ...Though while talking to him, he doesn't seem like a loner either.
+                c: Hah. You'd be surprised. 
+
+            if curly_001_answer_new
+                show c neutral
+                P: I guess I needed a change of scenery.
+                N: His eyebrows raise slightly.
+                c: So a ship thousands of miles away from earth is your first choice?
+
+                show c happy
+
+                N: He gives you that warm smile again.
+                c: I'm not judging, you know. 
+                P: No, I mean yes, I mean I don't know.
+                P: Earth gets boring after a while.
+                P: Just reviewing technical documentation day-by-day...
+                P: I wanted something new.
+                N: He nods sympathically.
+                c: I get that.
+
+            show c happy
+            c: But see? No matter why, you're not really alone here.
+            c: I think that matters.
+            N: He puts his hands on his hips. He reminds you of one of the motivational speakers you saw in college.
+            
+            c: ...You know, the co co-pilot, Jimmy?
+            c: I met him on earth, before I even started pilot academy. He's had a rough life, but he's here now.
+            c: Working his way up, just like you or Anya. Or even Daisuke!
+            c: He's a shortterm addition, but I'm sure under Swansea's tutelage he's going to go far.
+            N: If you remember right, Jimmy was the guy wih the permament scowl on his face. 
+            N: From what words you've exchanged with him, you're surprised he and Curly are friends. They seem... opposites. At least from the outside.
+            P: I haven't had the chance to get to know him, so far.
+            N: Now it's your turn to shrug. you're not sure if you *want* to get to know him.
+            P: I'm sure he's great though. If you're his buddy, I mean.
+            N: Curly winks.
+            c: He's a bit rough along the edges, but deep down he's dependable. Responsible even!
+            c: ...well usually.
+            N: He laughs. You chuckle too. You're kind of glad the captain is so positive.
+            P: That's good to hear. I'm sure we all will be hanging out a lot over the next few months.
+            N: Curly nods, and in another setting, you could imagine him putting a hand on your shoulder, all proud.
+            c: That's the spirit, _name!
+            N: It's going to be long, and maybe difficult. 
+            N: But at least you're in good company. That's all you could ask for.
+
+            go swansea_chat_01
+
+        if know_tulpar_crew
+            show c neutral
+
+            N: Maybe you should change the topic.
+            P: So, uh, have you worked with the others before?
+            N: He looks at you again, thinking.
+            c: Not really. 
+            c: I mean, I probably know them better than you now, seeing I was doing all the interviews.
+            c: Swansea was on one of my previous missions. That was before he was *chief* Engineer. 
+
+            show c happy
+
+            N: He smiles a bit.
+            c: Then there's Daisuke. Honestly it's pretty fitting, innit?
+            c: Swansea's knowledge being imparted on a new generation, I never thought I'd see it.
+            N: From what you'd seen of Daisuke, and heard of Swansea, you very much doubt that Swansea is happy about this arrangement.
+            N: But this is probably as good of a moment as any to learn more about the crew.
+            P: So there's six of us, right?
+            P: You, Me, Anya, Swansea, Daisuke and, uh, James, I think?
+            N: That guy with the scowl on his face, who barely listened in the organizational meeting.
+            N: You don't say that of course, there's no need to be rude.
+
+            show c neutral
+
+            c: Jimmy. But yeah, that's all of us.
+            c: Daisuke is... a bit unplanned, headquarters kind of added him after we've made the requisitions for the journey.
+            N: He doesn't seem happy about that. He crosses his arms over his chest.
+            c: There wasn't enough time to bring it up. I probably should've, but we're here now.
+            c: Might as well make the best of it.
+            N: You've experienced a bit of Daisuke yourself.
+            N: On the first day, he started showing you his console and some space game on it, asking you to "write him one of those bitchin' mods".
+            N: He's a bit loud, but seems excited enough.
+            P: We talked... or rather he talked and I listened.
+            P: Can I ask how he got the internship? He doesn't seem as...
+            N: Desperate? Hopeless? Smart? Mature? 
+            P: ...as *experienced* as the rest of us.
+            
+            show c happy
+
+            N: Curly uncrosses his arms and smiles. It's clear that he likes Daisuke, at least a little bit.
+            c: I don't actually know. It didn't go through me.
+            c: Corporate just dropped off his file on my desk a few days before takeoff.
+            c: But he's probably here for a reason. Maybe they're doing a post-grad program, for young people to get their foot in the door?
+            N: "Pony Express presents: Minimum Wage, Maximum Danger starter job!" you think to yourself.
+            N: It'd go well on one of those posters.
+            P: In any case, he seems nice. A bit overexcited, but motivation is good.
+            N: Curly smiles again.
+            c: Maybe he'll help mellow Swansea out a bit. He could use it.
+            show c neutral
+            c: Swansea has been with the company for a long time. Way longer than me.
+            
+            c: He's a good man.
+            N: He chuckles while he says this.
+            c: Though he takes no bullshit, from anyone.
+            N: He probably speaks from experience.
+            P: Did you work with him before?
+            c: Yeah once or twice. Only while I was a pilot though.
+            N: He smiles fondly. It looks good on him, makes him look younger.
+            c: He's had a hard life, and he grew a lot.
+            c: So don't let him get under your skin.
+
+            show c neutral
+
+            N: You nod. Swansea, Daisuke... You suppose you're gonna be seeing them a lot in the coming months.
+            P: So that's our engineering team, got it.
+            P: Anya is the nurse, right? Or is she a full CMO?
+            c: Ah, I believe she only has the Pony Express nursing certification.
+            c: She's sharp, definitely. We're in capable hands if anything happens.
+            N: He has this conviction in his words... It's heartwarming how much he believes in his crew.
+            c: As per the company policy, she's also going to conduct the psychological evaulations.
+            c: Now, before you say anything - yes they may not seem to be a priority.
+
+            show c happy
+
+            c: But that's not her fault, so behave and be truthful, yeah?
+            N: He wags a finger at you, playfully.
+            N: You get it. Paperwork may be annoying, but she's just doing her job.
+            P: Oh of course. There's probably going to come a time where *I'll* be asking you all to fill out logs as well.
+            P: So we all have to play nice.
+            N: You smile back.
+            c: That's the spirit!
+            P: When do they start anyway? I've had to fill out an assessment with my application, too.
+
+            show c neutral
+
+            N: He scratches his beard, thinking.
+            c: I think they're gonna be monthly, but don't take my word on it.
+            c: That reminds me - have you dropped the supplementary assessment off with her yet?
+            N: Ah, yeah, there was something you were forgetting...
+            P: Shoot, not yet. I completely forgot.
+            N: You shake your head. Another thing on the TODO-list, Swansea and then Anya.
+            N: Hope I won't get lost again, you think.
+            c: Yeah, that one's important too. 
+            c: Well, as important as the other things. Just do it before end-of-day and corporate will be happy.
+
+            P: Yes, of course. I think that's everybody, right?
+            N: You hope that the first week will go without any major problems. 
+            c: There's also Jimmy, but you're probably not going to see much of him on the clock.
+
+            show c happy
+
+            N: He smiles slightly. 
+            c: Not unless something is *majorly* broken in the cockpit.
+            c: Just don't be put off by his attitude - he has an attitude, but he's a good guy deep down.
+            c: You can trust me - I've known him since before pilot academy.
+            N: If he says so. So far you haven't seen much of the man, and what you've seen doesn't exactly make you... excited to see more.
+            N: Curly seems like a good judge of character though. You trust him.
+            P: Haha, thanks for the advice.
+            N: His teeth flash when he smiles back.
+            c: I like your attitude, _name. 
+            c: Was there anything else you need?
+            N: You probably need to get going. Gotta drop stuff off, gotta do your job.
+
+        go curly_chat_01_end
+
+
+    Scene curly_chat_01_end is
+        background is placeholder.png #cockpit_01.png
+
+        N: test test
+        N: wait hello?
+        go swansea_chat_01
+            
+
+
+    Scene swansea_chat_01 is
+        background is placeholder.png #utility_01.png
+
+        show c neutral
+        P: Guess I should be going.
+        N: He smiles again.
+        show c happy
+        c: Great!
+        c: I'll probably be here for a while, but I think we deserve an evening just to relax.
+        c: I have some extra credits on my personal account, so how about we sit down with the whole crew over those vending machine snacks?
+        c: It would be good to get to know everyone better, so we can *trust* each other.
+        N: God, he looks like a golden retriever. You can't say no to him.
+        P: I mean-
+        P: That's really nice of you, cap- 
+        P: Curly. It would be nice to have some downtime just to talk.
+        P: You want to do this tonight?
+        c: Or tomorrow, if Swansea's emergency keeps you late.
+        c: Just come down to the lounge around 18:00.
+        c: That reminds me - I think I still have my old boombox and my *best* playlist somewhere.
+        c: Boardgames, crisps and music - it'll be perfect.
+        N: One of the machines - an oldschool fax you think, blinks behind him, catchins his attention.
+
+        show c neutral
+
+        c: Word from the management, excuse me...
+
+        show c back
+
+        N: That's a good moment to leave him alone, you're probably done here.
+        P: I'll go. Thanks for the invite, Curly.
+        if curly_chat_001
+            P: And for the chat.
+            P: I'm sure tonight will be great.
+
+        N: He seems to be pretty focused on reading whatever came through from headquarters. That's your cue.
+        P: I'll see you later.
+        N: He looks over his shoulder, an apologetic smile on his face.
+        c: Yes, sorry, I've got to check something. Take care, we'll catch up later.
+        N: Curly returns to whatever message he's got, and you exit the cockpit, letting the doors whoosh behind you.
+
+        hide c
+        background is placeholder.png #corridor_01.png
+
+        N: ...
+        N: For all the humming and buzzing on the ship, it's *feels* quiet.
+        N: Your boots echo off the walls and floors.
+        N: You're still not really used to the artificial gravity all around.
+        N: Eventually you make your way to utility.
+
+        background is placeholder.png # utility_01.png
+
+        show s back, d
+        N: From what you remember, the guy in the pink shirt is Daisuke.
+        N: He doesn't look like a very... mechanically minded person.
+        d: Oh nice, tank top is here!
+        P: ...You mean me?
+        P: I'm _name, and you're Daisuke, right? We-
+        d: We talked yeah, I showed you *Ringspace* and you helped me with those barrels, no wait, ozone tanks and-
+
+        show s neutral
+
+        N: The man next to him turns around finally. His arms are stained up to the elbows with grease.
+        s: Dammit, kid, can you stop the yapping and help me with this?
+        N: He grumbles under his breath.
+        s: They ain't paying us for chatting.
+        d: Oh yeah, sorry! Here, let me...
+
+        show d back
+
+        s: Just hold the damn panel, and try not to shock yourself.
+        s: One of the wires there is busted to hell.
+        N: He instructs Daisuke where the screws are, and how to tighten them properly.
+        N: Seems the intern is learning already.
+        N: Then, Swansea turns to you. You can't quite tell what kind of look he has in his eye.
+
+        if know_tulpar_crew
+            N: But you remember what Curly said. 
+            N: He's just grumpy by default, but he means well.
+        
+        s: So - you're the _job? Hah!
+        s: Didn't know they let fresh-outta-school kids take the post.
+        N: Hey now, wait a minute. You take offense to that!
+        P: Hi Swansea. I'm _name and I'm _age, thank you very much.
+        P: Kind of far off from a kid.
+        s: Whatever. Captain said you're the one to call when there's a mess.
+        s: And this kid...
+
+        N: He glances at Daisuke next to him. There's a slight "zap" sound.
+        d: OW!
+        s: He's a goddamn walkin' mess factory.
+
+        P: Right. So, what did you need me for?
+
+        show s happy
+
+        N: He grins. Oh you don't like that. What is he thinking?
+        s: Babysittin'.
+        P: What? That's not what I'm here for. Curly said-
+        s: Yeah, yeah, the captain has his papers, but the reality is - the kid's damn useless.
+        N: He says this into the direction of Daisuke.
+        s: Take him 'round the ship. Show him where the vital systems are.
+        s: And tell him to goddamn stay away from them.
+        s: Ain't need more problems in the first week. 
+
+        show s happy
+
+        N: He leans slightly closer to you and lowers his voice.
+        N: Behind him, Daisuke mutters something unintelligibly under his breath.
+        s: Those tanks you helped him with? He let one of 'em fall, and pop - three hundred credits docked right from my account!
+        s: He's a walkin' liability that's what he is.
+
+        show s neutral
+
+        d: Hey! I'm-
+        N: Theres the sound of hissing, and an unpleasant screech of metal. 
+        d: Shit-
+        N: The wrench he was holding hits the floor.
+        s: Damn it! I told ya to stop yappin' and concentrate!
+
+        show s back
+
+        N: He turns around, and shoves Daisuke aside.
+
+        show d neutral
+
+        s: Here, I'll do it.
+        s: Again.
+        N: Daisuke looks embarrassed at you.
+        d: Sorry... I tried though! Hard! It's those little fiddly bits, man, they're all greased up with the black stuff.
+        P: Yeah, I... I get it.
+        N: You were the same when you started. Or something close to that.
+
+        if curly_chat_001
+            N: Swansea wanted something from you, but he's busy right now. Might as well make conversation til he finishes.
+            P: So... you're Swansea's intern right? Joined last minute?
+            N: Daisuke looks at you.
+            d: Oh yeah. How'd you know that?
+            P: Curly told me. I should probably double check inventory, to make sure there's rations planned for you too.
+            N: Daisuke nods.
+            d: Yeah starving would be mega uncool. 
+            d: Between you and me...
+            N: He lowers his voice, while Swansea fiddles in the background.
+            d: ...I have *no* idea what I'm doing here!
+            d: I mean I've been around y'know. But my mom made me do this internship thing.
+            d: Said it would give me some drive.
+            d: But it's all work work work here! I thought spaceships were supposed to like, work on their own!
+            N: You nod sympathetically. Parents.
+            d: And Swansea's *no* help at all!
+            N: What?
+            d: I mean yeah, he's totally into the electrics and stuff, but all he does is complain when I try!
+            d: It's cool though, kinda. It's like having a real job.
+            N: It seems those two are like fire and water.
+            P: This *is* a real job, though.
+            P: Like, I absolutely understand what you're getting at, but if you poke a hole in the hull we're all dying quickly and painfully.
+            d: Yeah, I know. Totally.
+
+        d: Besides, Swansea never lets me anywhere near anything sharp. Or dangerous.
+
+        show d happy
+
+        d: It's a shame too, you know I was at a party once, and there were those cool shots with fire, and then we had like, a knife throwing contest!
+        d: I only got like, minorly hurt, and now I've got a cool as hell scar!
+        N: God help us all, we're not making it back.
+        P: That's... how are you still alive?
+        N: He shrugs, as if that's an answer.
+        N: Swansea curses, but then whatever he was working on makes a click, and he turns around.
+
+        show s neutral, d neutral
+
+        s: There. It's fixed.
+        s: No thanks to you, knucklehead.
+        N: There's no bite in his voice this time. He sounds... tired.
+        P: So, Swansea, what do you want me to do with Daisuke? I'm not exactly trained in... mentoring.
+        s: Bah, mentoring, shmentoring. Just walk him around the ship, make sure he's got his forms in order. 
+        s: I have twenty more of there little bastards left to fix.
+        N: He jerks his thumb in the direction of utility.
+        s: Once I'm done I'll take him off your hands. Just need to get a damn moment of peace 'n quiet.
+        N: Daisuke doesn't look hurt by his words, which is good. The last thing you want is to be a therapist around here.
+        N: Then, Swansea hesitates.
+
+        s: Unless you're as incompetent as you look?
+        if know_tulpar_crew
+            N: You know he doesn't mean it like it sounds. He's just stressed.
+        if not know_tulpar_crew
+            N: Again with this. You're just here to do your job, not to be berated by a sweaty guy in a mustard t-shirt.
+            N: ...It's the same color as your tank top, but you *make* it look good.
+        s: So how 'bout it? 
+
+        choice is Fine. Daisuke tags along for the day
+            set 001_daisuke_follow
+        choice is You really don't want to deal with this right now
+            
+        if 001_daisuke_follow
+            N: You sigh. Maybe it's for the better.
+            N: Curly did stress the importance of getting to know the crew.
+            N: And being in Swansea's good graces is... probably also useful.
+            N: Finally, having made your decision you nod. Daisuke lights up.
+
+            show d happy
+
+            P: Fiiiiine. I'll take him around. Show him where the access points are and the works.
+            P: But this will *not* be a regular thing, right? I already have a *lot* on my plate.
+            N: Before Swansea has a chance to respond, Daisuke butts in.
+            d: HELL YEAH! TOUR! TOUR! TOUR!
+            N: You hate to admit it, but he's kind of adorable.
+            s: Sigh. Good, now get outta here.
+            s: *Some* of us are actually workin', so that this tin can doesn't blow halfway throught he mission.
+            P: Thanks for the pep talk, Swansea.
+            d: Yeah, thanks!
+            N: He means it without a shred of irony.
+            N: Swansea doesn't say anything, just sighs again and walks inside the utility room.
+
+            hide s
+
+            d: So, tour guide _name, where are we going first?
+
+            choice is Finish your errands
+                go anya_chat_daisuke_01
+            choice is Ah what the hell. Tour time
+                go daisuke_tour_01
+
+        
+        N: As much as... enthusiastic Daisuke is, that's really not your area of expertise.
+        show s, d
+        N: Besides, you're not that used to the Tulpar yourself. Maybe once you've compared the blueprints to what's actually there, you'd give him a tour.
+
+        P: I'm sorry Swansea, but I really can't do that.
+        N: Daisuke visibly deflates. Swansea grunts.
+
+        show d sad
+
+        d: Aw...
+        d: I really wanted a tour...
+        s: Bah. shit, I don't blame you kid, he's a damn handful.
+        s: Fine, boy, I've got a stack of files to organize. You'll probably screw that up too, but at least it's nothin' vital.
+        s: This time.
+
+        show d neutral
+
+        d: Sure... Can I at least fill out some myself? I brought my lucky pen here!
+        s: Hell no, these need to follow the regulations! I saw that thing, it's got red goddamn ink, that ain't regulation at all.
+        s: Just go with me, yeah? Try not to trip, we ain't got time for an injury report.
+
+        N: He gestures for Daisuke to follow him inside the utility room. You can spot a big stack of papers on the desk.
+
+        hide d, s
+
+        N: Damn, now you kinda feel bad for the guy, but honestly, when Curly said there's a problem...
+        N: You didn't think it was a people problem. You've got enough to do, and as sweet as Daisuke is, you really don't have time for teaching him which buttons lock which hatches.
+        N: Well, issue resolved you guess?
+
+        N: What was next on the list... oh yeah the health form.
+        go anya_chat_01
+
+    Scene is anya_chat_01
+        background is placeholder.png #corridor_02.png
+
+        N: This time, you manage to follow the signs, and you find yourself standing in front of the Medical office.
+        N: When you try to open the door, it doesn't budge.
+        P: Huh, didn't know there were locks.
+        N: You knock on the door, but there's no answer. Is Anya even there?
+        P: Hello? Anya?
+        N: You knock again. Still nothing.
+        N: Well, you'll do that later then, what's next? Oh yeah-
+
+        show a 
+
+        a: _name? Are you looking for me?
+        N: You jump up, startled. Damn, you didn't hear her behind you at all!
+        N: You spin around to face her.
+        P: Ah, yeah, hi!
+        P: Curly said 
